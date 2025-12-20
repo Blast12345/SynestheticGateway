@@ -51,9 +51,9 @@ private:
         const MacAddress macAddress(mac_addr);
         
         if (status == ESP_NOW_SEND_SUCCESS) {
-            Serial.print("Data sent successfully to: " + macAddress.toString());
+            Serial.println("Data sent successfully to " + macAddress.toString());
         } else {
-            Serial.print("Data send failed to: " + macAddress.toString());
+            Serial.println("Data send failed to " + macAddress.toString());
         }
     }
     

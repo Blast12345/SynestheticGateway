@@ -37,7 +37,7 @@ Unix systems (Linux, macOS):
     1. Open a terminal.
     2. List all serial outputs: `ls /dev/cu*`
     3. Note the device that corresponds to the gateway (e.g., `/dev/cu.usbserial-0001`).
-    4. Send a message: `echo "test1" > /dev/tty.usbserial-0001`
+    4. Send a message: `echo "test1" > /dev/cu.usbserial-0001`
     5. Verify that the message appears in the serial monitor. This confirms that the gateway is receiving serial
        messages.
 3. Verify that the client is receiving the message.
