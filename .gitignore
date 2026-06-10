@@ -5,3 +5,10 @@
 .vscode/ipch
 src/Secrets.h
 **/.DS_Store
+
+
+# Idea
+.idea/*
+!.idea/codeStyles/
+!.idea/dictionaries/
+!.idea/inspectionProfiles/
