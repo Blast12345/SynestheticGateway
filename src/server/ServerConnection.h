@@ -16,24 +16,31 @@ using std::nullopt;
 
 class ServerConnection {
     HardwareSerial *serial;
-    std::function<void()> gatewayIdentificationRequestHandler;
+    std::function<void(const JsonDocument &)> gatewayIdentificationRequestHandler;
+    std::function<void(const JsonDocument &)> broadcastColorHandler;
 
 public:
-    explicit ServerConnection(HardwareSerial &serial) : serial(&serial) {}
+    explicit ServerConnection(HardwareSerial &serial) : serial(&serial) {
+        serial.begin(USB_BAUD_RATE);
+    }
 
     void checkForIncomingMessages() const {
+        // Serial.println("Checking for incoming messages...");
+
         auto nextJson = checkForJson();
 
         if (!nextJson) {
             return;
         }
 
-        // Serial.println("Message received from server: " + nextJson.value().as<String>());
+        const String method = nextJson.value()["method"];
 
-        const String messageType = nextJson.value()["message-type"];
+        if (method == "gateway-identification-request" && gatewayIdentificationRequestHandler) {
+            gatewayIdentificationRequestHandler(nextJson.value());
+        }
 
-        if (messageType == "gateway-identification-request" && gatewayIdentificationRequestHandler) {
-            gatewayIdentificationRequestHandler();
+        if (method == "broadcast-color" && broadcastColorHandler) {
+            broadcastColorHandler(nextJson.value());
         }
     }
 
@@ -41,11 +48,15 @@ public:
         serializeJson(json, *serial);
         serial->write('\n');
 
-        // Serial.println("Message sent to server: " + json.as<String>());
+        DebugSerial.println("Serial Write: " + json.as<String>());
     }
 
-    void onGatewayIdentificationRequest(const std::function<void()> &handler) {
+    void onGatewayIdentificationRequest(const std::function<void(const JsonDocument &)> &handler) {
         gatewayIdentificationRequestHandler = handler;
+    }
+
+    void onBroadcastColor(const std::function<void(const JsonDocument &)> &handler) {
+        broadcastColorHandler = handler;
     }
 
 private:
@@ -55,6 +66,8 @@ private:
         if (!nextLine) {
             return nullopt;
         }
+
+        DebugSerial.println("Serial Receive: " + nextLine.value());
 
         JsonDocument json;
         deserializeJson(json, *nextLine);
@@ -66,6 +79,8 @@ private:
         if (serial->available() == 0) {
             return nullopt;
         }
+
+        DebugSerial.println("Data available...");
 
         return serial->readStringUntil('\n');
     }

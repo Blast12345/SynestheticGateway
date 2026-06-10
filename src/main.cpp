@@ -1,12 +1,14 @@
-#include <optional>
 #include <WiFi.h>
+
+#include "DebugSerial.h"
 #include "clients/ClientNetwork.h"
+#include "misc/Version.h"
 #include "server/ServerConnection.h"
 
 constexpr unsigned DEBUG_DELAY = 5000;
 constexpr unsigned WIFI_WARMUP = 1000;
 
-// ServerSerial and DebugSerial
+HardwareSerial &USBSerial = Serial;
 ServerConnection *serverConnection;
 ClientNetwork *clientNetwork;
 
@@ -15,9 +17,11 @@ void setup() {
     delay(DEBUG_DELAY);
 #endif
 
-    Serial.begin(BAUD_RATE);
-    Serial.println("Baud rate set to: " + String(BAUD_RATE));
-    serverConnection = new ServerConnection(Serial);
+    // TODO: Update readme with debug information
+    DebugSerial.begin(DEBUG_BAUD_RATE);
+    DebugSerial.println("Baud rate set to: " + String(DEBUG_BAUD_RATE));
+
+    serverConnection = new ServerConnection(USBSerial);
 
     WiFi.mode(WIFI_STA); // NOLINT
 
@@ -30,16 +34,32 @@ void setup() {
 
     clientNetwork = new ClientNetwork();
 
-    Serial.println("Setup complete.");
+    DebugSerial.println("Setup complete.");
 
     // Router class
-    serverConnection->onGatewayIdentificationRequest([]() -> void {
-        JsonDocument json;
-        json["message-type"] = "gateway-identification-response";
-        json["message-sender"] = "gateway";
-        json["message-recipient"] = "server";
+    serverConnection->onGatewayIdentificationRequest([](const JsonDocument &request) -> void {
+        DebugSerial.println("Gateway identification request received.");
 
-        serverConnection->sendMessage(json);
+        JsonDocument body;
+        body["mac-address"] = MacAddress().toString();
+        body["firmware-version"] = Version::toString();
+
+        JsonDocument response;
+
+        response["jsonrpc"] = "2.0";
+        response["id"] = request["id"];
+        response["result"] = body;
+
+        serverConnection->sendMessage(response);
+    });
+
+    serverConnection->onBroadcastColor([](const JsonDocument &request) -> void {
+        DebugSerial.println("Broadcast color received.");
+
+        String message;
+        serializeJson(request, message);
+
+        clientNetwork->broadcast(message);
     });
 }
 
