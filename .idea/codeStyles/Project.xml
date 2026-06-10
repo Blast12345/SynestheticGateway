@@ -1,5 +1,6 @@
 <component name="ProjectCodeStyleConfiguration">
   <code_scheme name="Project" version="173">
+    <option name="AUTODETECT_INDENTS" value="false" />
     <CMakeCodeStyleSettings>
       <option name="ALIGN_COMMAND_CALL_R_PAR" value="true" />
     </CMakeCodeStyleSettings>
@@ -13,17 +14,14 @@
     <RiderCodeStyleSettings>
       <option name="/Default/CodeStyle/CodeFormatting/CppClangFormat/EnableClangFormatSupport/@EntryValue" value="false" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_BINARY_EXPRESSIONS_CHAIN/@EntryValue" value="true" type="bool" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_CALLS_CHAIN/@EntryValue" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_EXPRESSION/@EntryValue" value="false" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_FOR_STMT/@EntryValue" value="true" type="bool" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTIPLE_DECLARATION/@EntryValue" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_TERNARY/@EntryValue" value="ALIGN_ALL" type="string" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/KEEP_BLANK_LINES_IN_DECLARATIONS/@EntryValue" value="1" type="long" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/KEEP_BLANK_LINES_IN_CODE/@EntryValue" value="1" type="long" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/KEEP_USER_LINEBREAKS/@EntryValue" value="true" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INDENT_CASE_FROM_SWITCH/@EntryValue" value="true" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INDENT_COMMENT/@EntryValue" value="true" type="bool" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INT_ALIGN_EQ/@EntryValue" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/SIMPLE_BLOCK_STYLE/@EntryValue" value="DO_NOT_CHANGE" type="string" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/SPACE_AFTER_COMMA_IN_TEMPLATE_ARGS/@EntryValue" value="true" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/SPACE_AFTER_COMMA_IN_TEMPLATE_PARAMS/@EntryValue" value="true" type="bool" />
@@ -51,10 +49,7 @@
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_ARGUMENT/@EntryValue" value="true" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_EXTENDS_LIST/@EntryValue" value="true" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_PARAMETER/@EntryValue" value="true" type="bool" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_TYPE_ARGUMENT/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_TYPE_PARAMETER/@EntryValue" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/BLANK_LINES_AROUND_DECLARATIONS/@EntryValue" value="0" type="int" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INDENT_ACCESS_SPECIFIERS_FROM_CLASS/@EntryValue" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INDENT_CLASS_MEMBERS_FROM_ACCESS_SPECIFIERS/@EntryValue" value="true" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/LINE_BREAK_AFTER_COLON_IN_MEMBER_INITIALIZER_LISTS/@EntryValue" value="ON_SINGLE_LINE" type="string" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/MEMBER_INITIALIZER_LIST_STYLE/@EntryValue" value="DO_NOT_CHANGE" type="string" />
@@ -111,20 +106,8 @@
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/REMOVE_BLANK_LINES_NEAR_BRACES_IN_DECLARATIONS/@EntryValue" value="false" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/EMPTY_BLOCK_STYLE/@EntryValue" value="TOGETHER_SAME_LINE" type="string" />
       <option name="/Default/CodeStyle/CppSortIncludes/FilesBeforeFolders/@EntryValue" value="false" type="bool" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALLOW_FAR_ALIGNMENT/@EntryValue" />
-      <option name="/Default/CodeStyle/EditorConfig/EnableClangFormatSupport/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/USE_CONTINUOUS_LINE_INDENT_IN_METHOD_PARS/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/USE_CONTINUOUS_LINE_INDENT_IN_EXPRESSION_BRACES/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INDENT_WRAPPED_FUNCTION_NAMES/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INDENT_GOTO_LABELS/@EntryValue" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_FIRST_ARG_BY_PAREN/@EntryValue" value="true" type="bool" />
       <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/ALIGN_MULTILINE_EXPRESSION_BRACES/@EntryValue" value="true" type="bool" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/OUTDENT_COMMAS/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INT_ALIGN_DECLARATION_NAMES/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/INT_ALIGN_BITFIELD_SIZES/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/SIMPLE_EMBEDDED_STATEMENT_STYLE/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppFormatting/SIMPLE_CASE_STATEMENT_STYLE/@EntryValue" />
-      <option name="/Default/CodeStyle/CodeFormatting/CppCodeStyle/UseAutoForNumeric/@EntryValue" />
     </RiderCodeStyleSettings>
     <codeStyleSettings language="CMake">
       <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
@@ -134,15 +117,6 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="ObjectiveC">
-      <option name="KEEP_LINE_BREAKS" value="false" />
-      <option name="KEEP_BLANK_LINES_IN_DECLARATIONS" value="1" />
-      <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
-      <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="1" />
-      <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
-      <option name="IF_BRACE_FORCE" value="3" />
-      <option name="DOWHILE_BRACE_FORCE" value="3" />
-      <option name="WHILE_BRACE_FORCE" value="3" />
-      <option name="FOR_BRACE_FORCE" value="3" />
       <indentOptions>
         <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
       </indentOptions>

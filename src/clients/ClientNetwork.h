@@ -15,58 +15,58 @@ public:
         registerDataSentCallback();
         addPeer(broadcastPeer);
     }
-    
+
     void broadcast(const String &message) const {
         const auto *data = StringHelpers::toBytes(message);
         const size_t len = message.length();
-        
+
         const MacAddress macAddress = broadcastPeer.getMacAddress();
         const esp_err_t result = esp_now_send(macAddress.toBytes(), data, len);
-        
+
         if (result == ESP_OK) {
-            Serial.println("Message sent successfully");
+            DebugSerial.println("Successfully broadcast: " + message);
         } else {
             const char *errorMessage = esp_err_to_name(result);
-            Serial.print("Failed to send message: " + String(errorMessage));
+            DebugSerial.print("Failed to send message: " + String(errorMessage));
         }
     }
 
 private:
     static void initializeEspNow() {
         const esp_err_t result = esp_now_init();
-        
+
         if (result == ESP_OK) {
-            Serial.println("ESP-NOW initialized successfully");
+            DebugSerial.println("ESP-NOW initialized successfully.");
         } else {
             const char *errorMessage = esp_err_to_name(result);
-            Serial.println("Error initializing ESP-NOW: " + String(errorMessage));
+            DebugSerial.println("Error initializing ESP-NOW: " + String(errorMessage));
         }
     }
-    
+
     static void registerDataSentCallback() {
         esp_now_register_send_cb(OnDataSent);
     }
-    
+
     static void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
         const MacAddress macAddress(mac_addr);
-        
+
         if (status == ESP_NOW_SEND_SUCCESS) {
-            Serial.print("Data sent successfully to: " + macAddress.toString());
+            DebugSerial.println("Data sent successfully to " + macAddress.toString());
         } else {
-            Serial.print("Data send failed to: " + macAddress.toString());
+            DebugSerial.println("Data send failed to " + macAddress.toString());
         }
     }
-    
+
     static void addPeer(const Peer peer) {
         const esp_now_peer_info_t peerInfo = peer.getInfo();
         const esp_err_t result = esp_now_add_peer(&peerInfo);
-        
+
         if (result == ESP_OK) {
-            Serial.println("Peer added successfully");
+            DebugSerial.println("Peer added successfully");
         } else {
             const char *errorMessage = esp_err_to_name(result);
-            Serial.println("Failed to add peer: " + String(errorMessage));
+            DebugSerial.println("Failed to add peer: " + String(errorMessage));
         }
     }
-    
+
 };
