@@ -3,16 +3,10 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
 #include <functional>
+#include "DebugSerial.h"
 
 using std::optional;
 using std::nullopt;
-
-// TODO: Document
-// JSON
-// message-type
-// message-sender
-// message-recipient
-// r, g, b
 
 class ServerConnection {
     HardwareSerial *serial;

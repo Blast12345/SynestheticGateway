@@ -1,12 +1,11 @@
 #pragma once
 
+#include <Arduino.h>
+
 #ifndef FIRMWARE_VERSION
-#define FIRMWARE_VERSION "dev"
+#define FIRMWARE_VERSION "dev" // NOLINT(cppcoreguidelines-macro-usage)
 #endif
 
-class Version {
-public:
-    static auto toString() -> String {
-        return FIRMWARE_VERSION;
-    }
-};
+constexpr auto kFirmwareVersion = FIRMWARE_VERSION;
+
+#undef FIRMWARE_VERSION

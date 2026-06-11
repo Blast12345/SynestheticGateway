@@ -1,36 +1,21 @@
 #include <WiFi.h>
-
 #include "DebugSerial.h"
 #include "clients/ClientNetwork.h"
 #include "misc/Version.h"
 #include "server/ServerConnection.h"
-
-constexpr unsigned DEBUG_DELAY = 5000;
-constexpr unsigned WIFI_WARMUP = 1000;
 
 HardwareSerial &USBSerial = Serial;
 ServerConnection *serverConnection;
 ClientNetwork *clientNetwork;
 
 void setup() {
-#ifdef DEBUG
-    delay(DEBUG_DELAY);
-#endif
-
-    // TODO: Update readme with debug information
     DebugSerial.begin(DEBUG_BAUD_RATE);
-    DebugSerial.println("Baud rate set to: " + String(DEBUG_BAUD_RATE));
+    delay(WARMUP_DELAY_MS);
+    DebugSerial.println("Debug baud rate set to: " + String(DEBUG_BAUD_RATE));
 
     serverConnection = new ServerConnection(USBSerial);
 
-    WiFi.mode(WIFI_STA); // NOLINT
-
-    /*
-     * TODO: ESP-NOW will init successfully without this, but the peer fails to add without.
-     * The delay also must be directly in the setup method; including it in the constructor does not seem to work.
-     * This is very strange and my research has not yielded any results. Perhaps this is a bug in the ESP-NOW library?
-    */
-    delay(WIFI_WARMUP);
+    WiFiClass::mode(WIFI_STA);
 
     clientNetwork = new ClientNetwork();
 
@@ -41,8 +26,8 @@ void setup() {
         DebugSerial.println("Gateway identification request received.");
 
         JsonDocument body;
-        body["mac-address"] = MacAddress().toString();
-        body["firmware-version"] = Version::toString();
+        body["mac-address"] = MacAddress::local().toString();
+        body["firmware-version"] = kFirmwareVersion;
 
         JsonDocument response;
 

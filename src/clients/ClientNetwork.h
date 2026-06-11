@@ -1,6 +1,7 @@
 #pragma once
 
 #include <esp_now.h>
+#include "DebugSerial.h"
 #include "clients/BroadcastPeer.h"
 #include "clients/Peer.h"
 #include "helpers/StringHelpers.h"
