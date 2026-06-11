@@ -8,6 +8,7 @@ HardwareSerial &USBSerial = Serial;
 ServerConnection *serverConnection;
 ClientNetwork *clientNetwork;
 
+// cppcheck-suppress unusedFunction
 void setup() {
     DebugSerial.begin(DEBUG_BAUD_RATE);
     delay(WARMUP_DELAY_MS);
@@ -48,6 +49,7 @@ void setup() {
     });
 }
 
+// cppcheck-suppress unusedFunction
 void loop() {
     serverConnection->checkForIncomingMessages();
     // clients->checkForNewMessages();

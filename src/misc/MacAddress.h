@@ -34,8 +34,8 @@ public:
         std::array<String, Octets> parts;
 
         for (size_t i = 0; i < Octets; ++i) {
-            const auto byte = address.at(i);
-            parts.at(i) = StringHelpers::toHexString(byte);
+            const auto octet = address.at(i);
+            parts.at(i) = StringHelpers::toHexString(octet);
         }
 
         return StringHelpers::join(parts, ":");
