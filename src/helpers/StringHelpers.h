@@ -1,5 +1,8 @@
 #pragma once
 
+#include <Arduino.h>
+#include <array>
+
 namespace StringHelpers {
     
     static auto toBytes(const String &input) -> const std::uint8_t * {

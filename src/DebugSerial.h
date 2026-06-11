@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 
-HardwareSerial &DebugSerial = Serial2;
+inline HardwareSerial &DebugSerial = Serial2;

@@ -1,6 +1,7 @@
 Checks: >
   bugprone-*, 
   clang-analyzer-*, 
+  -clang-diagnostic-pragma-once-outside-header,
   cppcoreguidelines-*,
   -cppcoreguidelines-avoid-non-const-global-variables,
   -cppcoreguidelines-owning-memory,
@@ -18,3 +19,4 @@ Checks: >
 # -cppcoreguidelines-pro-type-member-init: The constructor should be responsible for initializing its members.
 # -modernize-use-nodiscard: There are other lint checks that should prevent unused code, so I'd rather not introduce additional syntax.
 # -readability-else-after-return: There are times when I feel the else statement is more readable.
+# -clang-diagnostic-pragma-once-outside-header: ClangTidy is evaluating files in isolation, but "pragma once" is useful in context of the full build.
